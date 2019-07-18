@@ -11,5 +11,16 @@ router.post('/login', async function (ctx, next) {
     }
 })
 
+router.get('/login-test', async function (ctx, next) {
+    if (ctx.session.viewcount == null) {
+        ctx.session.viewcount = 0;
+    }
+    ctx.session.viewcount++;
+    ctx.body = {
+        errno: 0,
+        viewcount: ctx.session.viewcount
+    }
+})
+
 
 module.exports = router
